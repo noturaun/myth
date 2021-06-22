@@ -4,7 +4,8 @@ public class MyTh {
     public static String[] todos = new String[10];
     public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        viewShowTodo();
+//        viewShowTodo();
+        testAll();
     }
 
     /**
@@ -21,8 +22,6 @@ public class MyTh {
         }
     }
     static void testShowTodo(){
-//        todos[0] = "Belajar java";
-//        todos[1] = "Belajar semua hal";
         showTodo();
     }
 
@@ -199,6 +198,19 @@ public class MyTh {
         addTodo("4");
         showTodo();
         viewDeleteTodo();
+        showTodo();
+    }
+
+    static void testAll(){
+        addTodo("1");
+        addTodo("2");
+        addTodo("3");
+        addTodo("4");
+        addTodo("5");
+        showTodo();
+        deleteTodo(2);
+        deleteTodo(3);
+        deleteTodo(4);
         showTodo();
     }
 }
