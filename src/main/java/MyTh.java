@@ -1,17 +1,9 @@
-package main.java;
-
 import java.util.Scanner;
 
 public class MyTh {
     public static String[] todos = new String[10];
     public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-//        testDeleteTodo();
-//        testNewTodo();
-//        testViewAddTodo();
-//        testViewShowTodo();
-//       testViewAddTodo();
-//        testViewDeleteTodo();
         viewShowTodo();
     }
 
@@ -40,9 +32,9 @@ public class MyTh {
     static void addTodo(String todo){
     // Check if todos is full
         boolean isFull = true;
-        for (int i = 0; i < todos.length; i++) {
-            if (todos[i] == null){
-            // todos still have enough capacity
+        for (String s : todos) {
+            if (s == null) {
+                // todos still have enough capacity
                 isFull = false;
                 break;
             }
@@ -51,9 +43,7 @@ public class MyTh {
             var temp = todos;
             todos = new String[todos.length * 2];
 
-            for (int i = 0; i < temp.length; i++) {
-                todos[i] = temp[i];
-            }
+            System.arraycopy(temp, 0, todos, 0, temp.length);
         }
     // add todo to todos
         for (var i = 0; i < todos.length; i++){
@@ -113,8 +103,7 @@ public class MyTh {
      */
     public static String input(String info){
         System.out.print(info +" : ");
-        String data = scanner.nextLine();
-        return data;
+        return scanner.nextLine();
     }
     static void testNewTodo(){
         var data = input("nama");
@@ -124,6 +113,7 @@ public class MyTh {
      * show the menu on show todo
      */
     static void viewShowTodo(){
+        label:
         while (true){
             System.out.println("----------------------------------");
             System.out.println("----- MyTh - Your Simple Todo ----");
@@ -137,15 +127,19 @@ public class MyTh {
             showTodo();
             var input = input("Pilih menu");
 
-            if (input.equals("1")){
-                 viewAddTodo();
-             } else if (input.equals("2")){
-                 viewDeleteTodo();
-             } else  if (input.equals("x")){
-                 break;
-             } else {
-                 System.out.println("Invalid input");
-             }
+            switch (input) {
+                case "1":
+                    viewAddTodo();
+                    break;
+                case "2":
+                    viewDeleteTodo();
+                    break;
+                case "x":
+                    break label;
+                default:
+                    System.out.println("Invalid input");
+                    break;
+            }
         }
     }
     static void testViewShowTodo(){
