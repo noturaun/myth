@@ -1,3 +1,2 @@
-out
-build
-.gradle
+/target
+/src/main/resources/config.properties
