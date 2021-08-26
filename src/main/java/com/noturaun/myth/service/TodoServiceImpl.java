@@ -14,14 +14,9 @@ public class TodoServiceImpl implements TodoService{
     @Override
     public void showTodo() {
         Todo[] todos = repository.getAll();
-
-        for( var i = 0; i < todos.length; i++){
-            var todo = todos[i];
-            var no = i + 1;
-
-            if(todo != null){
-                System.out.println(no + ". " + todo.getTodo());
-            }
+        for (var todo :
+                todos) {
+            System.out.println(todo.getId() + ". " + todo.getTodo());
         }
     }
 
